@@ -1,0 +1,59 @@
+.TodoItem {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.TodoItem + .TodoItem {
+  border-top: 1px solid #e9ecef;
+}
+
+
+/* opacity : 1 => 투명하지 않음, 선명함 */
+/* opacity : 0 => 투명하다 */
+
+.TodoItem .check {
+  font-size: 1.25rem;
+  color: #dee2e6;
+  opacity: 0;
+}
+/* 기본을 0으로 지정해놓고, hover이나 active 되면 1로 변경 */
+
+.TodoItem:hover .check {
+  opacity: 1;
+}
+
+/* active : 마우스 클릭 */
+.TodoItem.active .check{
+  opacity: 1;
+  color: #10508b;
+}
+
+.TodoItem.TodoItem.active .text {
+  text-decoration: line-through;
+  color: #adb5bd;
+}
+/* text-decoration: line-through 할일 다하면 지울라고 그,, 글자위에 밑줄 치는거! */
+
+
+.TodoItem .text{
+  flex: 1;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.TodoItem .remove {
+  color: #0f382e;
+  opacity: 0;
+}
+
+.TodoItem .remove:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.TodoItem:hover .remove {
+  opacity: 1;
+}
