@@ -13,7 +13,7 @@ class CreateForm extends Component {
 		});
 	};
 
-	handleSubmitt = e => {
+	handleSubmit = e => {
 		//Form Submit은 페이지를 새로고침을 트리거하는데
 		// 이를 방지해준다.
 		e.preventDefault();
@@ -23,7 +23,7 @@ class CreateForm extends Component {
 
 	render() {
 		return (
-			<form className="CreateForm" onSubmit={this.handleSubmitt}>
+			<form className="CreateForm" onSubmit={this.handleSubmit}>
 				<input placeholder="오늘은 뭐해야해?" onChange={this.handleChange} value={this.state.input} />
 				<button type="submit">등록</button>
 			</form>
