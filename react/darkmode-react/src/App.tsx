@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <Global styles={GlobalStyles} />
+      <Global styles={GlobalStyles(theme)}/>
       <button onClick={toggleTheme}>Toggle theme</button>
       <h1>It's a {theme} theme!</h1>
     </>

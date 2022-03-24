@@ -1,3 +1,10 @@
+export type THEME_STYLE = {
+  body: string,
+  text: string,
+  toggleBorder: string,
+  gradient: string
+}
+
 export const lightTheme = {
   body: "#E2E2E2",
   text: "#363537",

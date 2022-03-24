@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
+import { THEME_STYLE } from "./theme";
 
-export const GlobalStyles = css`
+export const GlobalStyles = (theme: THEME_STYLE) =>(css`
   *,
   *::after,
   *::before {
@@ -18,8 +19,10 @@ export const GlobalStyles = css`
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif;
     transition: all 0.25s linear;
+    background: ${theme.body};
+    color: ${theme.text};
   }
-`;
+`);
 
 // background: ${props => props.theme.body};
 // color: ${props => props.theme.text};
