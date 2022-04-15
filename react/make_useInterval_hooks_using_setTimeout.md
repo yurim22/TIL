@@ -29,6 +29,33 @@ export const useInterval = (callback, delay) => {
 };
 ```
 
+위에 코드로 했더니 타이머가 종료되어도 setTimout 함수가 계속 동작하는 이슈가 있어서 아래와 같이 해결
+```javascript
+import { useEffect, useRef } from 'react';
+
+export const useInterval = (callback, delay) => {
+    const savedCallback = useRef(callback);
+
+    useEffect(() => {
+        savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval
+    useEffect(() => {
+
+        if (delay !== null) {
+            let id = setTimeout(function tick() {
+                savedCallback.current();
+                id = setTimeout(tick, delay);
+            }, delay);
+
+            return () => clearTimeout(id);
+        }
+    }, [delay]);
+};
+```
+이렇게 해야지 clearTimeout(id) 할때 제대로 잡고 지워주더라구...
+
 #### 중첩 setTimeout
 무언가를 일정 간격을 두고 실행하는 방법에는 setInterval과 setTimeout을 이용하는 두 가지 방법이 있다.
 
