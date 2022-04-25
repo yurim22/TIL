@@ -12,3 +12,47 @@
 결론부터 말하면 하위에 있는 컴포넌트 먼저 실행된다.
 useEffect는 컴포넌트가 렌더링 된 후에 실행되는 것이다. A > B > C 순서로 component가 있다고 가정했을 때, A component가 `render` 되기 위해서는 B component가 먼저 렌더링 되어야 하고, 
 B component가 완전히 렌더링 되기 위해서는 C component가 렌더링 되어야 한다.
+
+```javascript
+export default function A() {
+  useEffect(() => {
+    console.log('A');
+  }, []);
+  return (
+    <div>
+      <h1>useEffect 순서 test</h1>
+      <B />
+    </div>
+  )
+}
+
+const B = () => {
+  useEffect(() => {
+    console.log('B');
+  }, []);
+  return (
+    <>
+      <h2>B component</h2>
+      <C />
+    </>
+  )
+}
+
+const C = () => {
+  useEffect(() => {
+    console.log('C');
+  }, []);
+  return (
+    <>
+      <h2>C component</h2>
+    </>
+  )
+}
+```
+
+```
+output :
+C 
+B
+A
+```
