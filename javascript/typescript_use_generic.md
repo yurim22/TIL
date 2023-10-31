@@ -19,3 +19,9 @@ function identity<T>(arg: T): T {
 }
 ```
  `<T>`는 Type의 약자로 제네릭을 선언할 때 T를 관용적으로 사용한다. 여기에서 다이아몬드 연산자 안에 있는 T는 타입변수라고 한다.
+
+ 그저 생성자를 호출하여 객체를 만들 때 T로 사용될 타입을 지정해주기만 하면 된다.
+
+```typescript
+const testString = identity('string type');
+```
